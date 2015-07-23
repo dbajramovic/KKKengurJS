@@ -1,0 +1,19 @@
+<section data-ng-controller="AttendencerecordsController" data-ng-init="find()">
+    <div class="page-header">
+        <h1>Attendencerecords</h1>
+    </div>
+    <div class="list-group">
+        <a data-ng-repeat="attendencerecord in attendencerecords" data-ng-href="#!/attendencerecords/{{attendencerecord._id}}" class="list-group-item">
+			<small class="list-group-item-text">
+				Posted on
+				<span data-ng-bind="attendencerecord.created | date:'medium'"></span>
+				by
+				<span data-ng-bind="attendencerecord.user.displayName"></span>
+			</small>
+			<h4 class="list-group-item-heading" data-ng-bind="attendencerecord.name"></h4>
+        </a>
+    </div>
+    <div class="alert alert-warning text-center" data-ng-hide="!attendencerecords.$resolved || attendencerecords.length">
+    	No Attendencerecords yet, why don't you <a href="/#!/attendencerecords/create">create one</a>?
+    </div>
+</section>
