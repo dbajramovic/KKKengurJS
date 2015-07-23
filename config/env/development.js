@@ -1,7 +1,7 @@
 'use strict';
 
 module.exports = {
-	db: ' mongodb://kengurjs:FCChelsea1@ds055782.mongolab.com:55782/kkkengur',
+	db: ' mongodb://kengurjs:kengurjs@ds055782.mongolab.com:55782/kkkengur',
 	app: {
 		title: 'kengurjs - Development Environment'
 	},
