@@ -27,6 +27,9 @@ var CompetitionSchema = new Schema({
     description: {
         type: String,
         default: 'Nema opisa'
+    },
+    date: {
+        type:Date
     }
 });
 

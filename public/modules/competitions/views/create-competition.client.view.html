@@ -1,14 +1,23 @@
 <section data-ng-controller="CompetitionsController">
     <div class="page-header">
-        <h1>New Competition</h1>
+        <h1>Novo takmičenje</h1>
     </div>
     <div class="col-md-12">
         <form class="form-horizontal" data-ng-submit="create()" novalidate>
             <fieldset>
-                <div class="form-group">
-                    <label class="control-label" for="name">Name</label>
+                <div class=form-group">
+                    <label class="control-label" for="name">Naziv</label>
                     <div class="controls">
                         <input type="text" data-ng-model="name" id="name" class="form-control" placeholder="Name" required>
+                    </div>
+                    <label class="control-label" for="name">Opis</label>
+                    <div class="controls">
+                       <textarea cols="30" data-ng-model="description" id="description" class="form-control" placeholder="Opis"></textarea>
+                    </div>
+                    <div class="controls">
+                        <div style="display:inline-block; min-height:290px;">
+                            <datepicker data-ng-model="date" show-weeks="true" class="well well-sm"></datepicker>
+                        </div>
                     </div>
                 </div>
                 <div class="form-group">

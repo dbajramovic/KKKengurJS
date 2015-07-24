@@ -9,7 +9,9 @@ angular.module('competitions').controller('CompetitionsController', ['$scope', '
 		$scope.create = function() {
 			// Create new Competition object
 			var competition = new Competitions ({
-				name: this.name
+				name: this.name,
+                description: this.description,
+                date: this.date
 			});
 
 			// Redirect after save
