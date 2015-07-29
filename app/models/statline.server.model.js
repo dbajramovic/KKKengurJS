@@ -12,8 +12,7 @@ var mongoose = require('mongoose'),
 var StatlineSchema = new Schema({
 	competition: {
         type: Schema.ObjectId,
-        ref: 'Competition',
-        required: 'true'
+        ref: 'Competition'
     },
     name: {
       type: String
@@ -28,7 +27,7 @@ var StatlineSchema = new Schema({
 	},
     player: {
         type: Schema.ObjectId,
-        ref: 'User'
+        ref: 'Player'
     },
     points: {
         type:Number,

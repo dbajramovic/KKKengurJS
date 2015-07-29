@@ -1,6 +1,6 @@
-<section data-ng-controller="StatlinesController">
+<section data-ng-controller="StatlinesController" data-ng-init="listPlayers()">
     <div class="page-header">
-        <h1>New Statline</h1>
+        <h1>Nova statistika{{test}}</h1>
     </div>
     <div class="col-md-12">
         <form class="form-horizontal" data-ng-submit="create()" novalidate>
@@ -8,9 +8,13 @@
                 <div class="form-group">
                     <label class="control-label" for="name">Igrač:</label>
                     <div class="controls">
-                       <select ng-repeat="user in users">
-                           <option>{{user.firstName || ' ' || user.lastName}}</option>
-                           </select>
+                        <select class="form-control" data-ng-model="player" data-ng-options="player.name for player in players">
+                        </select>
+                    </div>
+                    <label class="control-label" for="name">Takmičenje:</label>
+                    <div class="controls">
+                        <select class="form-control" data-ng-model="competition" data-ng-options="competition.name for competition in competitions">
+                        </select>
                     </div>
                     <label class="control-label" for="name">Naziv:</label>
                     <div class="controls">
@@ -18,11 +22,11 @@
                     </div>
                     <label class="control-label" for="name">Poeni:</label>
                     <div class="controls">
-                        <input type="text" data-ng-model="points" id="points" class="form-control" placeholder="Name" required>
+                        <input type="text" data-ng-model="points" id="points" class="form-control" placeholder="Poeni" required>
                     </div>
                     <label class="control-label" for="name">Greške:</label>
                     <div class="controls">
-                        <input type="text" data-ng-model="fouls" id="fouls" class="form-control" placeholder="Name" required>
+                        <input type="text" data-ng-model="fouls" id="fouls" class="form-control" placeholder="Greške" required>
                     </div>
                 </div>
                 <div class="form-group">

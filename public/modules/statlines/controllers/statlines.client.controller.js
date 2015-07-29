@@ -1,17 +1,26 @@
 'use strict';
 
 // Statlines controller
-angular.module('statlines').controller('StatlinesController', ['$scope', '$stateParams', '$location', 'Authentication', 'Statlines','Users',
-	function($scope, $stateParams, $location, Authentication, Statlines,Users) {
+angular.module('statlines').controller('StatlinesController', ['$scope', '$stateParams', '$location', 'Authentication', 'Statlines','Players','Competitions','$log',
+	function($scope, $stateParams, $location, Authentication, Statlines,Players,Competitions,$log) {
 		$scope.authentication = Authentication;
-
+        $scope.listPlayers = function() {
+            $scope.players = Players.query( function() {
+                $scope.competitions = Competitions.query();
+            });
+        };
 		// Create new Statline
 		$scope.create = function() {
 			// Create new Statline object
+            $scope.$log = $log;
 			var statline = new Statlines ({
-				name: this.name
+				name: this.name,
+                competition: this.competition._id,
+                player: this.player._id,
+                points: this.points,
+                fouls: this.fouls
 			});
-
+            $scope.test = statline;
 			// Redirect after save
 			statline.$save(function(response) {
 				$location.path('statlines/' + response._id);
@@ -54,7 +63,6 @@ angular.module('statlines').controller('StatlinesController', ['$scope', '$state
 		// Find a list of Statlines
 		$scope.find = function() {
 			$scope.statlines = Statlines.query();
-            $scope.users = Users.query();
 		};
 
 		// Find existing Statline
