@@ -15,6 +15,9 @@ var StatlineSchema = new Schema({
         ref: 'Competition',
         required: 'true'
     },
+    name: {
+      type: String
+    },
 	created: {
 		type: Date,
 		default: Date.now
@@ -23,6 +26,10 @@ var StatlineSchema = new Schema({
 		type: Schema.ObjectId,
 		ref: 'User'
 	},
+    player: {
+        type: Schema.ObjectId,
+        ref: 'User'
+    },
     points: {
         type:Number,
         default: 0

@@ -1,8 +1,8 @@
 'use strict';
 
 // Statlines controller
-angular.module('statlines').controller('StatlinesController', ['$scope', '$stateParams', '$location', 'Authentication', 'Statlines',
-	function($scope, $stateParams, $location, Authentication, Statlines) {
+angular.module('statlines').controller('StatlinesController', ['$scope', '$stateParams', '$location', 'Authentication', 'Statlines','Users',
+	function($scope, $stateParams, $location, Authentication, Statlines,Users) {
 		$scope.authentication = Authentication;
 
 		// Create new Statline
@@ -54,6 +54,7 @@ angular.module('statlines').controller('StatlinesController', ['$scope', '$state
 		// Find a list of Statlines
 		$scope.find = function() {
 			$scope.statlines = Statlines.query();
+            $scope.users = Users.query();
 		};
 
 		// Find existing Statline
