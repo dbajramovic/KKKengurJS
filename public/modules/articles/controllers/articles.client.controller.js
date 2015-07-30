@@ -5,9 +5,11 @@ angular.module('articles').controller('ArticlesController', ['$scope', '$statePa
 		$scope.authentication = Authentication;
 
 		$scope.create = function() {
+            var cb = this.content.substr(0,150)+'...';
 			var article = new Articles({
 				title: this.title,
-				content: this.content
+				content: this.content,
+                contentbit: cb
 			});
 			article.$save(function(response) {
 				$location.path('articles/' + response._id);
