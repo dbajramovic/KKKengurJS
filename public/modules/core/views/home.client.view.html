@@ -1,24 +1,24 @@
-<section data-ng-controller="HomeController">
-	<div class="jumbotron text-center">
-		<div class="row">
-			<div class="col-md-6 col-md-offset-3 col-sm-6 col-sm-offset-3 col-xs-12">
-				<img alt="MEAN.JS" class="img-responsive text-center" src="modules/core/img/brand/kengurlogo.jpg" />
-			</div>
-		</div>
-		<br>
-		<div class="row">
-			<p class="lead">
-				Omladinski košarkaški klub "Kengur" Zenica
-			</p>
-		</div>
-	</div>
-    <div data-ng-init="getnewarticles()">
-        <div data-ng-repeat="article in articles track by article._id">
-            <div class="col-md-3 well well-sm col-xs-12">
-                <h3>{{article.title}}</h3>
-                <p>{{article.contentbit}}</p>
-                <a data-ng-href="#!/articles/{{article._id}}" class="btn btn-primary">Dalje...</a>
+<section data-ng-controller="HomeController" data-ng-init="getnewarticles()">
+    <div class="col-md-12">
+        <carousel interval="myInterval" no-wrap="noWrapSlides">
+                    <slide ng-repeat="slide in slides" active="slide.active">
+                        <img ng-src="{{slide.image}}" style="margin:auto;">
+                        <div class="carousel-caption">
+                            <p>{{slide.text}}</p>
+                        </div>
+                    </slide>
+        </carousel>
+    </div>
+    <br>
+    <div class="col-md-12">
+        <h2 class="naslov1">Najnovije vijesti</h2>
+        <hr>
+            <div data-ng-repeat="article in articles track by article._id">
+                <div class="col-md-3 well well-sm col-xs-12">
+                    <h3 class="naslov2">{{article.title}}</h3>
+                    <p>{{article.contentbit}}</p>
+                    <a data-ng-href="#!/articles/{{article._id}}" class="btn btn-primary">Dalje...</a>
+                </div>
             </div>
-        </div>
     </div>
 </section>
