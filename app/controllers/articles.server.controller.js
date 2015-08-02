@@ -7,7 +7,6 @@ var mongoose = require('mongoose'),
 	errorHandler = require('./errors.server.controller'),
 	Article = mongoose.model('Article'),
 	_ = require('lodash');
-var cloudinary = require('cloudinary');
 /**
  * Create a article
  */
