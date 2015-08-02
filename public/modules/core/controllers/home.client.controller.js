@@ -12,7 +12,7 @@ angular.module('core').controller('HomeController', ['$scope', 'Authentication',
                 $scope.articles = Articles.query(
                     function() {
                         $scope.test = $scope.articles.length+'';
-                        while($scope.broj_clanaka%4!=0) {
+                        while($scope.broj_clanaka%4!==0) {
                             $scope.shownarticles.push($scope.articles);
                             $scope.test = $scope.broj_clanaka+'';
                             $scope.broj_clanaka+=1;
