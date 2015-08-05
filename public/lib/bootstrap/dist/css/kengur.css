@@ -1,0 +1,11 @@
+.naslov1 {
+    font-family: 'Bitter', serif;
+    color: white;
+}
+.naslov2 {
+    font-family: 'Oswald', sans-serif;
+
+}
+.bodyback {
+    background-image: url("../../back.jpg");
+}
