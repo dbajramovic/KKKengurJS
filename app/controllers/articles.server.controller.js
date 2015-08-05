@@ -7,6 +7,12 @@ var mongoose = require('mongoose'),
 	errorHandler = require('./errors.server.controller'),
 	Article = mongoose.model('Article'),
 	_ = require('lodash');
+var cloudinary = require('cloudinary');
+cloudinary.config({
+    cloud_name: 'kengurjs',
+    api_key: '851699676193425',
+    api_secret: 'x8lFku7EaGssmWvCetvjGPjgkOs'
+});
 /**
  * Create a article
  */

@@ -4,12 +4,14 @@
 angular.module('players').controller('PlayersController', ['$scope', '$stateParams', '$location', 'Authentication', 'Players','Competitions','Statlines',
 	function($scope, $stateParams, $location, Authentication, Players,Competitions,Statlines) {
 		$scope.authentication = Authentication;
-
+        $scope.years = [];
 		// Create new Player
 		$scope.create = function() {
+            var Year = new Date(this.year,1,1,0,0,0,0);
 			// Create new Player object
 			var player = new Players ({
-				name: this.name
+				name: this.name,
+                year: Year
 			});
 
 			// Redirect after save
@@ -50,7 +52,11 @@ angular.module('players').controller('PlayersController', ['$scope', '$statePara
 				$scope.error = errorResponse.data.message;
 			});
 		};
-
+        $scope.fillyears = function(){
+            for(var i=1980;i<2015;i++) {
+                $scope.years.push(i);
+            }
+        }
 		// Find a list of Players
 		$scope.find = function() {
 			$scope.players = Players.query();

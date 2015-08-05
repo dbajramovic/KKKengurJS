@@ -1,24 +1,23 @@
 <section data-ng-controller="PlayersController" data-ng-init="findOne()">
 	<div class="page-header">
-		<h1 class="naslov2" data-ng-bind="player.name"></h1>
+        <img src="{{player.picture}}"><h1 class="naslov1" data-ng-bind="player.name"></h1>
 	</div>
-    <div>Godište: {{player.year}}</div>
-    <div>Igrač je učestvovao u:
+    <div class="pull-right" data-ng-show="((authentication.user) && (authentication.user._id == player.user._id))">
+        <a class="btn btn-primary" href="/#!/players/{{player._id}}/edit">
+            <i class="glyphicon glyphicon-edit"></i>
+        </a>
+        <a class="btn btn-primary" data-ng-click="remove();">
+            <i class="glyphicon glyphicon-trash"></i>
+        </a>
+    </div>
+    <h4 class="naslov1">Godište: {{player.year | date:'year'}}</h4>
+    <div><h4 class="naslov1">Igrač je učestvovao u:</h4>
     <div data-ng-bind="findStats()">
         <div data-ng-repeat="competition in competitions">
             {{competition.name}}
         </div>
     </div>
-        <img src="{{player.picture}}">
     </div>
-	<div class="pull-right" data-ng-show="((authentication.user) && (authentication.user._id == player.user._id))">
-		<a class="btn btn-primary" href="/#!/players/{{player._id}}/edit">
-			<i class="glyphicon glyphicon-edit"></i>
-		</a>
-		<a class="btn btn-primary" data-ng-click="remove();">
-			<i class="glyphicon glyphicon-trash"></i>
-		</a>
-	</div>
 	<small>
 		<em class="text-muted">
 			Posted on

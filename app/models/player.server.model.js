@@ -29,7 +29,7 @@ var PlayerSchema = new Schema({
     },
     picture: {
       type:String,
-        default:'http://res.cloudinary.com/kengurjs/image/upload/c_scale,h_400/v1438201378/basketball-player1_ybrks8.png'
+        default:'http://res.cloudinary.com/kengurjs/image/upload/c_pad,r_30,w_90/v1438201378/basketball-player1_ybrks8.png'
     }
 });
 
