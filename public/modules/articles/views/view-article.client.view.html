@@ -1,6 +1,6 @@
 <section data-ng-controller="ArticlesController" data-ng-init="findOne()">
 	<div class="page-header">
-		<h1 class="naslov1" data-ng-bind="article.title"></h1>
+		<h1 class="naslov1" data-ng-bind="article.title">{{test}}</h1>
 	</div>
 	<div class="pull-right" data-ng-show="authentication.user._id == article.user._id">
 		<a class="btn btn-primary" href="/#!/articles/{{article._id}}/edit">
@@ -10,8 +10,22 @@
 			<i class="glyphicon glyphicon-trash"></i>
 		</a>
 	</div>
-	<p class="h3" data-ng-bind="article.content"></p>
-    <small>
+	<p class="paragraf" data-ng-bind="article.content"></p>
+    <div class="list-group" data-ng-init="findComments()">
+        <a data-ng-repeat="comment in comments" data-ng-href="#!/comments/{{article._id}}/{{comment._id}}" class="list-group-item">
+            <small class="list-group-item-text">
+                Posted on
+                <span data-ng-bind="comment.created | date:'medium'"></span>
+                by
+                <span data-ng-bind="comment.user.displayName"></span>
+            </small>
+            <h4 class="list-group-item-heading" data-ng-bind="comment.name"></h4>
+        </a>
+    </div>
+    <div class="alert text-center" data-ng-hide="!comments.$resolved || comments.length">
+        Nema trenutno komentara, bili Ste željeli da ostavitite <a href="/#!/comments/{{article._id}}/create">jedan</a>?
+    </div>
+    <small class="paragraf">
         <em class="text-muted">
             Posted on
             <span data-ng-bind="article.created | date:'mediumDate'"></span>

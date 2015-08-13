@@ -26,6 +26,10 @@ var CommentSchema = new Schema({
     text: {
         type:String,
         default:''
+    },
+    name: {
+        type:String,
+        default:''
     }
 });
 

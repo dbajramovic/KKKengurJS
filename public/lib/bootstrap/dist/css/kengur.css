@@ -9,3 +9,7 @@
 .bodyback {
     background-image: url("../../back.jpg");
 }
+.paragraf {
+    font-family: 'Roboto Slab', serif;
+    color:white;
+}

@@ -1,7 +1,7 @@
 'use strict';
 
-angular.module('articles').controller('ArticlesController', ['$scope', '$stateParams', '$location', 'Authentication', 'Articles',
-	function($scope, $stateParams, $location, Authentication, Articles) {
+angular.module('articles').controller('ArticlesController', ['$scope', '$stateParams', '$location', 'Authentication', 'Articles','Comments',
+	function($scope, $stateParams, $location, Authentication, Articles, Comments) {
 		$scope.authentication = Authentication;
 
 		$scope.create = function() {
@@ -50,7 +50,10 @@ angular.module('articles').controller('ArticlesController', ['$scope', '$statePa
 		$scope.find = function() {
 			$scope.articles = Articles.query();
 		};
-
+        $scope.findComments = function() {
+            $scope.comments = Comments.query({article: $scope.article._id});
+            $scope.test = $scope.comments.length;
+        };
 		$scope.findOne = function() {
 			$scope.article = Articles.get({
 				articleId: $stateParams.articleId

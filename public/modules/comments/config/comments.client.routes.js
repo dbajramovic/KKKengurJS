@@ -6,19 +6,19 @@ angular.module('comments').config(['$stateProvider',
 		// Comments state routing
 		$stateProvider.
 		state('listComments', {
-			url: '/comments',
+			url: '/comments/:article',
 			templateUrl: 'modules/comments/views/list-comments.client.view.html'
 		}).
 		state('createComment', {
-			url: '/comments/create',
+			url: '/comments/:article/create',
 			templateUrl: 'modules/comments/views/create-comment.client.view.html'
 		}).
 		state('viewComment', {
-			url: '/comments/:commentId',
+			url: '/comments/:article/:commentId',
 			templateUrl: 'modules/comments/views/view-comment.client.view.html'
 		}).
 		state('editComment', {
-			url: '/comments/:commentId/edit',
+			url: '/comments/:article/:commentId/edit',
 			templateUrl: 'modules/comments/views/edit-comment.client.view.html'
 		});
 	}

@@ -4,17 +4,22 @@
 angular.module('comments').controller('CommentsController', ['$scope', '$stateParams', '$location', 'Authentication', 'Comments',
 	function($scope, $stateParams, $location, Authentication, Comments) {
 		$scope.authentication = Authentication;
-
+        $scope.test = 'NIJE';
 		// Create new Comment
 		$scope.create = function() {
 			// Create new Comment object
+            var artId = $stateParams.article;
+            $scope.test = artId;
 			var comment = new Comments ({
-				name: this.name
+				name: this.name,
+                text: this.text,
+                article: artId
 			});
-
+            $scope.test = comment;
 			// Redirect after save
 			comment.$save(function(response) {
-				$location.path('comments/' + response._id);
+                $scope.test = 'comments/' + artId + '/' + response._id;
+				$location.path($scope.test);
 
 				// Clear form fields
 				$scope.name = '';
@@ -59,7 +64,8 @@ angular.module('comments').controller('CommentsController', ['$scope', '$statePa
 		// Find existing Comment
 		$scope.findOne = function() {
 			$scope.comment = Comments.get({ 
-				commentId: $stateParams.commentId
+				commentId: $stateParams.commentId,
+                articleId: $stateParams.article
 			});
 		};
 	}
