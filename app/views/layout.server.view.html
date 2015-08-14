@@ -39,7 +39,7 @@
 	{% for cssFile in cssFiles %}<link rel="stylesheet" href="{{cssFile}}">{% endfor %}
     <link rel="stylesheet" type="text/css" href="lib/getshitdone/assets/css/get-shit-done.css">
     <link rel="stylesheet" type="text/css" href="lib/bootstrap/dist/css/kengur.css">
-
+    <link href="lib/toastr/toastr.css" rel="stylesheet"/>
 	<!-- HTML5 Shim -->
 	<!--[if lt IE 9]>
 		<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
@@ -47,7 +47,7 @@
 </head>
 
 <body class="ng-cloak bodyback">
-	<header data-ng-include="'/modules/core/views/header.client.view.html'" class="navbar navbar-default"></header>
+	<header data-ng-include="'/modules/core/views/header.client.view.html'" class="navbar navbar-inverse"></header>
 	<section class="content">
 		<section class="container">
 			{% block content %}{% endblock %}
@@ -60,12 +60,14 @@
 	</script>
 
 	<!--Application JavaScript Files-->
-	{% for jsFile in jsFiles %}<script type="text/javascript" src="{{jsFile}}"></script>{% endfor %} 
-
-	{% if process.env.NODE_ENV === 'development' %}
+	{% for jsFile in jsFiles %}<script type="text/javascript" src="{{jsFile}}"></script>{% endfor %}
+    <script src="lib/ng-file-upload-shim/ng-file-upload-shim.min.js"></script> <!-- for no html5 browsers support -->
+    <script src="lib/ng-file-upload/ng-file-upload.min.js"></script>
+    <script src="lib/toastr/toastr.js"></script>
+    {% if process.env.NODE_ENV === 'development' %}
 	<!--Livereload script rendered -->
 	<script type="text/javascript" src="http://{{request.hostname}}:35729/livereload.js"></script>
-	{% endif %}
+    {% endif %}
 </body>
 
 </html>

@@ -3,11 +3,11 @@
 module.exports = function(app) {
 	var users = require('../../app/controllers/users.server.controller');
 	var players = require('../../app/controllers/players.server.controller');
-
+	var multiparty = require('connect-multiparty'),multipartyMiddleware = multiparty();
 	// Players Routes
 	app.route('/players')
 		.get(players.list)
-		.post(users.requiresLogin, players.create);
+		.post(users.requiresLogin, multipartyMiddleware, players.create);
 
 	app.route('/players/:playerId')
 		.get(players.read)

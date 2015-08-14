@@ -1,8 +1,8 @@
 'use strict';
 
 // Players controller
-angular.module('players').controller('PlayersController', ['$scope', '$stateParams', '$location', 'Authentication', 'Players','Competitions','Statlines',
-	function($scope, $stateParams, $location, Authentication, Players,Competitions,Statlines) {
+angular.module('players').controller('PlayersController', ['$scope', '$stateParams', '$location', 'Authentication', 'Players','Competitions','Statlines','Upload',
+	function($scope, $stateParams, $location, Authentication, Players,Competitions,Statlines,Upload) {
 		$scope.authentication = Authentication;
         $scope.years = [];
 		// Create new Player
@@ -13,16 +13,33 @@ angular.module('players').controller('PlayersController', ['$scope', '$statePara
 				name: this.name,
                 year: Year
 			});
-
 			// Redirect after save
-			player.$save(function(response) {
+			/*player.$save(function(response) {
 				$location.path('players/' + response._id);
 
 				// Clear form fields
 				$scope.name = '';
 			}, function(errorResponse) {
 				$scope.error = errorResponse.data.message;
-			});
+			});*/
+            Upload.upload({
+                url: '/players',
+                method: 'POST',
+                headers: {'Content-Type': 'multipart/form-data'},
+                fields: {test:'AAA', player: player},
+                file: $scope.files
+            }).progress(function (evt) {
+            var progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
+            console.log('progress: ' + progressPercentage + '% ' + evt.config.file[0].name);
+            console.log(evt);
+        	}).success(function (response, status) {
+                $location.path('players/' + response._id);
+                $scope.title = '';
+                $scope.content = '';
+                //toastr['success']('Artikal je kreiran!', 'Uspješno');
+            }).error(function (err) {
+                //toastr['success']('Artikal nije kreiran!', 'Greška');
+            });
 		};
 
 		// Remove existing Player
@@ -56,7 +73,7 @@ angular.module('players').controller('PlayersController', ['$scope', '$statePara
             for(var i=1980;i<2015;i++) {
                 $scope.years.push(i);
             }
-        }
+        };
 		// Find a list of Players
 		$scope.find = function() {
 			$scope.players = Players.query();

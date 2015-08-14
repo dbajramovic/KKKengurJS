@@ -1,9 +1,9 @@
 <section data-ng-controller="PlayersController">
     <div class="page-header">
-        <h1 class="naslov1">Novi Igrač</h1>
+        <h1 class="naslov1">Dodaj Novog igrača</h1>
     </div>
     <div class="col-md-12">
-        <form class="form-horizontal" data-ng-submit="create()" novalidate>
+        <form name="playerForm" class="form-horizontal" data-ng-submit="create()" novalidate>
             <fieldset>
                 <div class="form-group">
                     <label class="control-label" for="name">Ime</label>
@@ -17,10 +17,10 @@
                         <input type="text" data-ng-model="year" id="year" class="form-control" placeholder="Year" required>
                     </div>
                 </div>
-                <div class="form-group">
-                    <label class="control-label" for="name">Godište</label>
+                <div class="form-group white-bg">
+                    <label class="control-label" for="name">Slika</label>
                     <div class="controls">
-                        <input type="file" data-ng-model="picture" class="form-control">
+                        <input type="file" ngf-select="" ng-model="files" name="file" accept="image/*" required="">
                     </div>
                 </div>
                 <div class="form-group">

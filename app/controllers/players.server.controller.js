@@ -7,23 +7,39 @@ var mongoose = require('mongoose'),
 	errorHandler = require('./errors.server.controller'),
 	Player = mongoose.model('Player'),
 	_ = require('lodash');
-
+var	multiparty = require('connect-multiparty');
+var	multipartyMiddleware = multiparty();
+var cloudinary = require('cloudinary');
+	
+cloudinary.config({
+    cloud_name: 'kengurjs',
+    api_key: '851699676193425',
+    api_secret: 'x8lFku7EaGssmWvCetvjGPjgkOs'
+});
 /**
  * Create a Player
  */
 exports.create = function(req, res) {
-	var player = new Player(req.body);
-	player.user = req.user;
-
-	player.save(function(err) {
-		if (err) {
-			return res.status(400).send({
-				message: errorHandler.getErrorMessage(err)
-			});
-		} else {
-			res.jsonp(player);
-		}
-	});
+    var pla = JSON.parse(req.body.player);
+    var player = new Player(pla);
+    cloudinary.uploader.upload(req.files.file.path, function (result) {
+        cloudinary.uploader.upload(req.files.file.path, function (resu) {
+            player.imageLink = result.secure_url;
+            player.imageLinkId = result.public_id;
+            player.imageThumb = resu.secure_url;
+            player.imageThumbId = resu.public_id;
+            player.save(function (err) {
+                if (err) {
+                    return res.status(400).send({
+                        message: errorHandler.getErrorMessage(err)});
+                	}
+                    res.json(player);
+                }
+            );
+           //});
+            //});
+        }, {width: 200, height: 200, crop: 'thumb', gravity: 'face'});
+    }, {width: 400, height: 400, crop: 'limit'});
 };
 
 /**

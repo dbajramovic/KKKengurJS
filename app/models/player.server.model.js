@@ -27,9 +27,25 @@ var PlayerSchema = new Schema({
     year: {
         type: Date
     },
-    picture: {
-      type:String,
-        default:'http://res.cloudinary.com/kengurjs/image/upload/c_pad,r_30,w_90/v1438201378/basketball-player1_ybrks8.png'
+    imageLink: {
+        type: String,
+        default: 'http://res.cloudinary.com/kengurjs/image/upload/c_pad,r_30,w_90/v1438201378/basketball-player1_ybrks8.png',
+        trim: true
+    },
+    imageLinkId: {
+        type: String,
+        default: '',
+        trim: true
+    },
+    imageThumb: {
+        type: String,
+        default: '',
+        trim: true
+    },
+    imageThumbId: {
+        type: String,
+        default: '',
+        trim: true
     }
 });
 
