@@ -38,7 +38,7 @@ exports.create = function(req, res) {
             );
            //});
             //});
-        }, {width: 200, height: 200, crop: 'thumb', gravity: 'face'});
+        }, {width: 100, height: 100, crop: 'thumb', gravity: 'face', border: { width: 2, color: '#ffffff' }});
     }, {width: 400, height: 400, crop: 'limit'});
 };
 

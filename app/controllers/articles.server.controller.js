@@ -7,7 +7,10 @@ var mongoose = require('mongoose'),
 	errorHandler = require('./errors.server.controller'),
 	Article = mongoose.model('Article'),
 	_ = require('lodash');
+var	multiparty = require('connect-multiparty');
+var	multipartyMiddleware = multiparty();
 var cloudinary = require('cloudinary');
+	
 cloudinary.config({
     cloud_name: 'kengurjs',
     api_key: '851699676193425',
@@ -17,18 +20,26 @@ cloudinary.config({
  * Create a article
  */
 exports.create = function(req, res) {
-	var article = new Article(req.body);
-	article.user = req.user;
-
-	article.save(function(err) {
-		if (err) {
-			return res.status(400).send({
-				message: errorHandler.getErrorMessage(err)
-			});
-		} else {
-			res.json(article);
-		}
-	});
+	var art = JSON.parse(req.body.article);
+    var article = new Article(art);
+    cloudinary.uploader.upload(req.files.file.path, function (result) {
+        cloudinary.uploader.upload(req.files.file.path, function (resu) {
+            article.imageLink = result.secure_url;
+            article.imageLinkId = result.public_id;
+            article.imageThumb = resu.secure_url;
+            article.imageThumbId = resu.public_id;
+            article.save(function (err) {
+                if (err) {
+                    return res.status(400).send({
+                        message: errorHandler.getErrorMessage(err)});
+                	}
+                    res.json(article);
+                }
+            );
+           //});
+            //});
+        }, {width: 200, height: 200, crop: 'thumb', gravity: 'face', radius: '20'});
+    }, {width: 1600, height: 900, crop: 'limit', border: { width: 4, color: '#553311' } });
 };
 
 /**

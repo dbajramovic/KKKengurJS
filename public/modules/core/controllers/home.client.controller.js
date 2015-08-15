@@ -23,12 +23,12 @@ angular.module('core').controller('HomeController', ['$scope', 'Authentication',
         $scope.getnewarticles = function () {
                 $scope.articles = Articles.query(
                     function() {
-                        $scope.test = $scope.articles.length+'';
-                        while($scope.broj_clanaka%4!==0) {
-                            $scope.shownarticles.push($scope.articles);
+                        while($scope.broj_clanaka%5!==0) {
+                            $scope.shownarticles.push($scope.articles[$scope.broj_clanaka-1]);
                             $scope.test = $scope.broj_clanaka+'';
                             $scope.broj_clanaka+=1;
                         }
+                        //$scope.test=$scope.shownarticles.length+'';
                     }
                 );
         };

@@ -13,11 +13,11 @@
     <div class="col-md-12">
         <h2 class="naslov1">Najnovije vijesti</h2>
         <hr>
-            <div data-ng-repeat="article in articles track by article._id">
+            <div data-ng-repeat="article in shownarticles">
                 <div class="col-md-3 well well-sm col-xs-12">
                     <h3 class="naslov2">{{article.title}}</h3>
                     <p>{{article.contentbit}}</p>
-                    <a data-ng-href="#!/articles/{{article._id}}" class="btn btn-primary">Dalje...</a>
+                    <a data-ng-href="#!/articles/{{article._id}}" class="btn btn-primary naslov1">Dalje...</a>
                 </div>
             </div>
     </div>

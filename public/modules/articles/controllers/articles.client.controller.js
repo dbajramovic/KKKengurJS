@@ -1,9 +1,9 @@
 'use strict';
 
-angular.module('articles').controller('ArticlesController', ['$scope', '$stateParams', '$location', 'Authentication', 'Articles','Comments',
-	function($scope, $stateParams, $location, Authentication, Articles, Comments) {
+angular.module('articles').controller('ArticlesController', ['$scope', '$stateParams', '$location', 'Authentication', 'Articles','Comments','Upload',
+	function($scope, $stateParams, $location, Authentication, Articles, Comments,Upload) {
 		$scope.authentication = Authentication;
-
+		$scope.relevantcomments = [];
 		$scope.create = function() {
             var cb = this.content.substr(0,150)+'...';
 			var article = new Articles({
@@ -11,14 +11,32 @@ angular.module('articles').controller('ArticlesController', ['$scope', '$statePa
 				content: this.content,
                 contentbit: cb
 			});
-			article.$save(function(response) {
+			/*article.$save(function(response) {
 				$location.path('articles/' + response._id);
 
 				$scope.title = '';
 				$scope.content = '';
 			}, function(errorResponse) {
 				$scope.error = errorResponse.data.message;
-			});
+			});*/
+			Upload.upload({
+                url: '/articles',
+                method: 'POST',
+                headers: {'Content-Type': 'multipart/form-data'},
+                fields: {article: article},
+                file: $scope.files
+            }).progress(function (evt) {
+            var progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
+            console.log('progress: ' + progressPercentage + '% ' + evt.config.file[0].name);
+            console.log(evt);
+        	}).success(function (response, status) {
+                $location.path('articles/' + response._id);
+                $scope.title = '';
+                $scope.content = '';
+                //toastr['success']('Artikal je kreiran!', 'Uspješno');
+            }).error(function (err) {
+                //toastr['success']('Artikal nije kreiran!', 'Greška');
+            });
 		};
 
 		$scope.remove = function(article) {
@@ -51,8 +69,15 @@ angular.module('articles').controller('ArticlesController', ['$scope', '$statePa
 			$scope.articles = Articles.query();
 		};
         $scope.findComments = function() {
-            $scope.comments = Comments.query({article: $scope.article._id});
-            $scope.test = $scope.comments.length;
+            $scope.comments = Comments.query(
+            	function() {
+            		 for(var i = 0;i < $scope.comments.length;i++) {
+            		 	if($scope.article._id === $scope.comments[i].article) {
+            		 		$scope.relevantcomments.push($scope.comments[i]);
+            		 	}
+            		}
+            	}
+            );
         };
 		$scope.findOne = function() {
 			$scope.article = Articles.get({

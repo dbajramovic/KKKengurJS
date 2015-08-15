@@ -1,6 +1,6 @@
 <section data-ng-controller="ArticlesController" data-ng-init="findOne()">
 	<div class="page-header">
-		<h1 class="naslov1" data-ng-bind="article.title">{{test}}</h1>
+		<h1 class="naslov1" data-ng-bind="article.title"></h1>
 	</div>
 	<div class="pull-right" data-ng-show="authentication.user._id == article.user._id">
 		<a class="btn btn-primary" href="/#!/articles/{{article._id}}/edit">
@@ -10,9 +10,10 @@
 			<i class="glyphicon glyphicon-trash"></i>
 		</a>
 	</div>
+    <a href="{{article.imageLink}}"><img width="50%" src="{{article.imageLink}}"></a>
 	<p class="paragraf" data-ng-bind="article.content"></p>
     <div class="list-group" data-ng-init="findComments()">
-        <a data-ng-repeat="comment in comments" data-ng-href="#!/comments/{{article._id}}/{{comment._id}}" class="list-group-item">
+        <a data-ng-repeat="comment in relevantcomments" data-ng-href="#!/comments/{{article._id}}/{{comment._id}}" class="list-group-item">
             <small class="list-group-item-text">
                 Posted on
                 <span data-ng-bind="comment.created | date:'medium'"></span>
