@@ -1,7 +1,6 @@
 'use strict';
 
 module.exports = {
-	db: 'mongodb://kengurjs:kengurjs@ds055782.mongolab.com:55782/kkkengur',
 	port: 3001,
 	app: {
 		title: 'kengurjs - Test Environment'
