@@ -1,7 +1,7 @@
 'use strict';
 
 module.exports = {
-	db: 'mongodb://kengurjs:kengurjs@ds055782.mongolab.com:55782/kkkengur',
+	db: process.env.MONGOHQ_URL || process.env.MONGOLAB_URI || 'mongodb://' + (process.env.DB_1_PORT_27017_TCP_ADDR || 'localhost') + '/kengurjs',
 	assets: {
 		lib: {
 			css: [
