@@ -3,7 +3,7 @@
 module.exports = {
 	db: 'mongodb://kengur:kengur@ds055782.mongolab.com:55782/kkkengur',
 	app: {
-		title: 'kengurjs - Development Environment'
+		title: 'KK Kengur Zenica'
 	},
 	assets: {
 		lib: {
