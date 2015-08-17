@@ -2,7 +2,7 @@
 
 module.exports = {
 	port: 443,
-	db: process.env.MONGOHQ_URL || process.env.MONGOLAB_URI || 'mongodb://localhost/kengurjs',
+	db: 'mongodb://kengurjs:kengurjs@ds055782.mongolab.com:55782/kkkengur',
 	assets: {
 		lib: {
 			css: [

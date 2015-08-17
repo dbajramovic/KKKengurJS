@@ -1,12 +1,12 @@
 <section data-ng-controller="ArticlesController">
 	<div class="page-header">
-		<h1 class="naslov1">New Article</h1>
+		<h1 class="naslov1">Nova vijest</h1>
 	</div>
 	<div class="col-md-12">
 		<form name="articleForm" class="form-horizontal" data-ng-submit="create()" novalidate>
 			<fieldset>
 				<div class="form-group" ng-class="{ 'has-error': articleForm.title.$dirty && articleForm.title.$invalid }">
-					<label class="control-label" for="title">Title</label>
+					<label class="control-label naslov1" for="title">Naslov</label>
 					<div class="controls">
 						<input name="title" type="text" data-ng-model="title" id="title" class="form-control" placeholder="Title" required>
 					</div>
