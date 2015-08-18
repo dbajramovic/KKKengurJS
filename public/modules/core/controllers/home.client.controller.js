@@ -20,6 +20,11 @@ angular.module('core').controller('HomeController', ['$scope', 'Authentication',
         $scope.broj_clanaka = 1;
         $scope.shownarticles = [];
         $scope.test = 'OVDJE';
+        $scope.sendmail = function() {
+            var parsedtext = $scope.emailtekst.replace(/ /g, "%20");
+            $scope.href = "mailto:kontaktkengurjs@gmail.com?Subject=Mail:%20" + $scope.email+ "\nTekst:%20" + parsedtext;
+            console.log(href);
+        };
         $scope.getnewarticles = function () {
                 $scope.articles = Articles.query(
                     function() {

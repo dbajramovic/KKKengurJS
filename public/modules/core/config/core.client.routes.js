@@ -16,6 +16,14 @@ angular.module('core').config(['$stateProvider', '$urlRouterProvider',
                 url:'/about',
                 templateUrl: 'modules/core/views/about.client.view.html'
             })
+            .state('kengurcup', {
+            	url:'/kengurcup',
+            	templateUrl:'modules/core/views/kengurcup.client.view.html'
+            })
+            .state('contact', {
+            	url:'/contact',
+            	templateUrl:'modules/core/views/contact.client.view.html'
+            })
         ;
 	}
 ]);

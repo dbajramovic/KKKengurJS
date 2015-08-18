@@ -1,0 +1,26 @@
+<section data-ng-controller="HomeController">
+    <div class="page-header">
+        <h1 class="naslov1">Kontakt{{href}}</h1>
+    </div>
+    <div class="col-md-12">
+    	<p class="paragraf">Ukoliko imate pitanja, primjedbe i sugestije, molimo Vas da iskoristite formu ispod:</p>
+    </div>
+    <div class="col-md-12">
+       <form name="articleForm" class="form-horizontal" data-ng-submit="sendmail()" novalidate>
+			<fieldset>
+				<label class="control-label naslov1" for="email" >E-mail:</label>
+					<div class="controls">
+						<input name="email" type="text" class="form-control" data-ng-model="email"></input>
+					</div>
+					<div class="controls">
+						<label class="control-label naslov1" for="text" >Tekst:</label>
+						<textarea name="text" class="form-control" data-ng-model="emailtekst"></textarea>
+					</div>
+					<br>
+					<div class="controls">
+						<input type="submit" class="btn btn-primary naslov1">
+					</div>
+			</fieldset>
+		</form>
+    </div>
+</section>
