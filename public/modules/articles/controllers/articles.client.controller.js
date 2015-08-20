@@ -9,7 +9,8 @@ angular.module('articles').controller('ArticlesController', ['$scope', '$statePa
 			var article = new Articles({
 				title: this.title,
 				content: this.content,
-                contentbit: cb
+                contentbit: cb,
+                user: $scope.authentication.user._id
 			});
 			/*article.$save(function(response) {
 				$location.path('articles/' + response._id);
