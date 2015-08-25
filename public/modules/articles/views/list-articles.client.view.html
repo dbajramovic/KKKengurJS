@@ -2,6 +2,10 @@
 	<div class="page-header">
 		<h1 class="naslov1">Vijesti</h1>
 	</div>
+	<div data-ng-show="isUser">
+		<a class="btn btn-primary naslov1" data-ng-href="#!/articles/create">Dodaj novu vijest</a>
+	</div>
+	<br>
 	<div class="list-group">
 		<a data-ng-repeat="article in articles" data-ng-href="#!/articles/{{article._id}}" class="list-group-item">
 			<h4 class="komentarnaslov" data-ng-bind="article.title"></h4>

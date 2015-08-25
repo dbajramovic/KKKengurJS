@@ -67,6 +67,9 @@ angular.module('articles').controller('ArticlesController', ['$scope', '$statePa
 		};
 
 		$scope.find = function() {
+			$scope.isUser = false;
+			if(typeof Authentication.user._id !== 'undefined')
+				$scope.isUser = true;
 			$scope.articles = Articles.query();
 		};
         $scope.findComments = function() {
