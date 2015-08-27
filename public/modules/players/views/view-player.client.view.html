@@ -1,7 +1,7 @@
 <section data-ng-controller="PlayersController" data-ng-init="findOne()">
 	<div class="page-header">
     </div>
-    <img class="col-md-2" src="{{player.imageThumb}}"><h1 class="naslov1 col-md-2" data-ng-bind="player.name"></h1>
+    <img class="col-md-2 img-circle" src="{{player.imageThumb}}"><h1 class="naslov1 col-md-2" data-ng-bind="player.name"></h1>
     <div class="pull-right" data-ng-show="((authentication.user) && (authentication.user._id == player.user._id))">
         <a class="btn btn-primary" href="/#!/players/{{player._id}}/edit">
             <i class="glyphicon glyphicon-edit"></i>

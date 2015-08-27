@@ -11,7 +11,7 @@
     </small>
 	</div>
     <div class="row">
-        <a class="col-md-4" href="{{article.imageLink}}"><img width="100%" src="{{article.imageLink}}"></a>
+        <a class="col-md-4" href="{{article.imageLink}}"><img class="img-rounded" width="100%" src="{{article.imageLink}}"></a>
 	    <p  class="paragraf text-justify col-md-8" data-ng-bind="article.content"></p>
     </div>
     <div class="pull-right" data-ng-show="authentication.user._id == article.user._id">
