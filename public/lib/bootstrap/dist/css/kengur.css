@@ -23,6 +23,7 @@
 }
 .white-bg{
     background:#ffffff !important;
+    border-radius: 5px;
 }
 .slide-animate-container {
   position:relative;

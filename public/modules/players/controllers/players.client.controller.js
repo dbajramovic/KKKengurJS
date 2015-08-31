@@ -5,6 +5,13 @@ angular.module('players').controller('PlayersController', ['$scope', '$statePara
 	function($scope, $stateParams, $location, Authentication, Players,Competitions,Statlines,Upload) {
 		$scope.authentication = Authentication;
         $scope.years = [];
+        $scope.playerstats = [];
+        $scope.compnames = [];
+        $scope.competition = null;
+        $scope.init = function() {
+        	$scope.findOne();
+        	$scope.findStats();
+        }
 		// Create new Player
 		$scope.create = function() {
             var Year = new Date(this.year,1,1,0,0,0,0);
@@ -78,12 +85,30 @@ angular.module('players').controller('PlayersController', ['$scope', '$statePara
 		$scope.find = function() {
 			$scope.players = Players.query();
 		};
+		$scope.findcompname = function(compId) {
+			$scope.competition = Competitions.get({
+		        competitionId: compId
+		    });
+		};
         $scope.findStats = function() {
-            /*$scope.competitions = Competitions.query(function() {
-                $scope.statlines = Statlines.query(function()
-                    {}
-                );
-            });*/
+        	$scope.competitions = Competitions.query(function() {
+        		 $scope.statlines = Statlines.query(function()
+                    {
+	                    	angular.forEach($scope.statlines, function (value) {
+		                    	if(value.player === $stateParams.playerId)
+		                    	{	
+		                    		var temp = value;
+		                    		var newstat = value;
+		                    		angular.forEach($scope.competitions, function(value) {
+		                    			if(value._id === temp.competition)
+		                    				newstat.competition = value.name;
+		                    		});
+		                    		$scope.test = newstat.competition;
+		                    		$scope.playerstats.push(newstat);
+		                    	}
+	                    });
+                    });
+        	});     
         };
 		// Find existing Player
 		$scope.findOne = function() {

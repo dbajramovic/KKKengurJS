@@ -6,19 +6,19 @@ angular.module('statlines').config(['$stateProvider',
 		// Statlines state routing
 		$stateProvider.
 		state('listStatlines', {
-			url: '/statlines',
+			url: '/statlines/:playerId',
 			templateUrl: 'modules/statlines/views/list-statlines.client.view.html'
 		}).
 		state('createStatline', {
-			url: '/statlines/create',
+			url: '/statlines/:playerId/create',
 			templateUrl: 'modules/statlines/views/create-statline.client.view.html'
 		}).
 		state('viewStatline', {
-			url: '/statlines/:statlineId',
+			url: '/statlines/:playerId/:statlineId',
 			templateUrl: 'modules/statlines/views/view-statline.client.view.html'
 		}).
 		state('editStatline', {
-			url: '/statlines/:statlineId/edit',
+			url: '/statlines/:playerId/:statlineId/edit',
 			templateUrl: 'modules/statlines/views/edit-statline.client.view.html'
 		});
 	}

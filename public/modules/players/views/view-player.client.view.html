@@ -1,7 +1,10 @@
-<section data-ng-controller="PlayersController" data-ng-init="findOne()">
-	<div class="page-header">
-    </div>
-    <img class="col-md-2 img-circle" src="{{player.imageThumb}}"><h1 class="naslov1 col-md-2" data-ng-bind="player.name"></h1>
+<section data-ng-controller="PlayersController" data-ng-init="init()">
+    <div class="row">
+    <img class="col-md-2 img-circle pull-left" src="{{player.imageLink}}">
+    <h1 class="naslov1 col-md-2" data-ng-bind="player.name"></h1>
+</div>
+    <br>
+    <hr>
     <div class="pull-right" data-ng-show="((authentication.user) && (authentication.user._id == player.user._id))">
         <a class="btn btn-primary" href="/#!/players/{{player._id}}/edit">
             <i class="glyphicon glyphicon-edit"></i>
@@ -10,20 +13,37 @@
             <i class="glyphicon glyphicon-trash"></i>
         </a>
     </div>
-    <h4 class="naslov1 row">Godište: {{player.year | date:'mediumDate'}}</h4>
+    <h4 class="naslov1">Godište: {{player.year | date:'mediumDate'}}</h4>
     <div><h4 class="naslov1">Igrač je učestvovao u:</h4>
-    <div data-ng-bind="findStats()">
-        <div data-ng-repeat="competition in competitions">
-            {{competition.name}}
-        </div>
+    <div class="white-bg">
+        <table class="table">
+                <thead>
+                  <tr>
+                    <th>Naziv takmičenja</th>
+                    <th>Poeni</th>
+                    <th>Greške</th>
+                    <th>Skokovi</th>
+                    <th>Procenat za tri poena</th>
+                    <th>Procenat za dva poena</th>
+                    <th>Procenat za jedan poena</th>
+                  </tr>
+                </thead>
+            <tbody>
+                        <tr data-ng-repeat="statline in playerstats">
+                            <td data-ng-bind="statline.competition"></td>
+                            <td data-ng-bind="statline.points"></td>
+                            <td data-ng-bind="statline.fouls"></td>
+                            <td data-ng-bind="statline.rebounds"></td>
+                            <td data-ng-bind="statline.threepointpct"></td>
+                            <td data-ng-bind="statline.twopointpct"></td>
+                            <td data-ng-bind="statline.onepointpct"></td>
+                        </tr>
+                </div>
+            </tbody>
+        </table>
     </div>
+        <a class="btn btn-primary" href="/#!/statlines/{{player._id}}/create">
+            <div class="naslov1">Dodaj novi podatak</div></i>
+        </a>
     </div>
-	<small>
-		<em class="text-muted">
-			Posted on
-			<span data-ng-bind="player.created | date:'mediumDate'"></span>
-			by
-			<span data-ng-bind="player.user.displayName"></span>
-		</em>
-	</small>
 </section>

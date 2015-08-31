@@ -13,17 +13,22 @@ angular.module('statlines').controller('StatlinesController', ['$scope', '$state
 		$scope.create = function() {
 			// Create new Statline object
             $scope.$log = $log;
+            var p = this.player._id;
 			var statline = new Statlines ({
 				name: this.name,
                 competition: this.competition._id,
                 player: this.player._id,
                 points: this.points,
-                fouls: this.fouls
+                fouls: this.fouls,
+                rebounds: this.rebounds,
+                threepointpct: this.threepointpct,
+                twopointpct: this.twopointpct,
+                onepointpct: this.onepointpct
 			});
             $scope.test = statline;
 			// Redirect after save
 			statline.$save(function(response) {
-				$location.path('statlines/' + response._id);
+				$location.path('players/' + p);
 
 				// Clear form fields
 				$scope.name = '';

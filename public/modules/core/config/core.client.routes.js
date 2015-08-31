@@ -24,6 +24,10 @@ angular.module('core').config(['$stateProvider', '$urlRouterProvider',
             	url:'/contact',
             	templateUrl:'modules/core/views/contact.client.view.html'
             })
+            .state('dashboard', {
+                url:'/dashboard',
+                templateUrl:'modules/core/views/dashboard.client.view.html'
+            })
         ;
 	}
 ]);

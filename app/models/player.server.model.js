@@ -13,7 +13,7 @@ var PlayerSchema = new Schema({
 	name: {
 		type: String,
 		default: '',
-		required: 'Please fill Player name',
+		required: 'Ime igrača je obavezno!',
 		trim: true
 	},
 	created: {

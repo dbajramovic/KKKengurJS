@@ -30,12 +30,28 @@ var StatlineSchema = new Schema({
         ref: 'Player'
     },
     points: {
-        type:Number,
-        default: 0
+        type:String,
+        default: 'N/A'
     },
     fouls: {
-        type:Number,
-        default: 0
+        type:String,
+        default: 'N/A'
+    },
+    rebounds: {
+        type:String,
+        default: 'N/A'
+    },
+    twopointpct: {
+        type:String,
+        default:'N/A'
+    },
+    threepointpct: {
+        type:String,
+        default:'N/A'
+    },
+    onepointpct: {
+        type:String,
+        default:'N/A'
     }
 });
 

@@ -1,32 +1,48 @@
 <section data-ng-controller="StatlinesController" data-ng-init="listPlayers()">
     <div class="page-header">
-        <h1>Nova statistika{{test}}</h1>
+        <h1 class="naslov1">Nova statistika{{test}}</h1>
     </div>
     <div class="col-md-12">
         <form class="form-horizontal" data-ng-submit="create()" novalidate>
             <fieldset>
                 <div class="form-group">
-                    <label class="control-label" for="name">Igrač:</label>
+                    <label class="control-label paragraf" for="name">Igrač:</label>
                     <div class="controls">
                         <select class="form-control" data-ng-model="player" data-ng-options="player.name for player in players">
                         </select>
                     </div>
-                    <label class="control-label" for="name">Takmičenje:</label>
+                    <label class="control-label paragraf" for="name">Takmičenje:</label>
                     <div class="controls">
                         <select class="form-control" data-ng-model="competition" data-ng-options="competition.name for competition in competitions">
                         </select>
                     </div>
-                    <label class="control-label" for="name">Naziv:</label>
+                    <label class="control-label paragraf" for="name">Naziv:</label>
                     <div class="controls">
-                        <input type="text" data-ng-model="name" id="name" class="form-control" placeholder="Name" required>
+                        <input type="text" data-ng-model="name" id="name" class="form-control" required>
                     </div>
-                    <label class="control-label" for="name">Poeni:</label>
+                    <label class="control-label paragraf" for="name">Poeni:</label>
                     <div class="controls">
-                        <input type="text" data-ng-model="points" id="points" class="form-control" placeholder="Poeni" required>
+                        <input type="text" data-ng-model="points" id="points" class="form-control">
                     </div>
-                    <label class="control-label" for="name">Greške:</label>
+                    <label class="control-label paragraf" for="name">Greške:</label>
                     <div class="controls">
-                        <input type="text" data-ng-model="fouls" id="fouls" class="form-control" placeholder="Greške" required>
+                        <input type="text" data-ng-model="fouls" id="fouls" class="form-control">
+                    </div>
+                    <label class="control-label paragraf" for="name">Skokovi:</label>
+                    <div class="controls">
+                        <input type="text" data-ng-model="rebounds" id="rebounds" class="form-control">
+                    </div>
+                    <label class="control-label paragraf" for="name">Procenat za tri poena:</label>
+                    <div class="controls">
+                        <input type="text" data-ng-model="threepointpct" id="threepointpct" class="form-control">
+                    </div>
+                    <label class="control-label paragraf" for="name">Procenat za dva poena:</label>
+                    <div class="controls">
+                        <input type="text" data-ng-model="twopointpct" id="twopointpct" class="form-control">
+                    </div>
+                    <label class="control-label paragraf" for="name">Procenat za 1 poen:</label>
+                    <div class="controls">
+                        <input type="text" data-ng-model="onepointpct" id="onepointpct" class="form-control">
                     </div>
                 </div>
                 <div class="form-group">
