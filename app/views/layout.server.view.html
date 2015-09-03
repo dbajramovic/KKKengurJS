@@ -38,6 +38,8 @@
 	{% for cssFile in cssFiles %}<link rel="stylesheet" href="{{cssFile}}">{% endfor %}
     <link rel="stylesheet" type="text/css" href="lib/getshitdone/assets/css/get-shit-done.css">
     <link rel="stylesheet" type="text/css" href="lib/bootstrap/dist/css/kengur.css">
+    <link href="lib/angular-bootstrap-calendar/dist/css/angular-bootstrap-calendar.min.css" rel="stylesheet">
+
     <link href="lib/toastr/toastr.css" rel="stylesheet"/>
 	<!-- HTML5 Shim -->
 	<!--[if lt IE 9]>
@@ -60,7 +62,9 @@
 
 	<!--Application JavaScript Files-->
 	{% for jsFile in jsFiles %}<script type="text/javascript" src="{{jsFile}}"></script>{% endfor %}
-    <script src="lib/ng-file-upload-shim/ng-file-upload-shim.min.js"></script> <!-- for no html5 browsers support -->
+    <script src="lib/ng-file-upload-shim/ng-file-upload-shim.min.js"></script> 
+    <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.0/moment.min.js"></script> 
+    <script src="lib/angular-bootstrap-calendar/dist/js/angular-bootstrap-calendar-tpls.min.js"></script>
     <script src="lib/ng-file-upload/ng-file-upload.min.js"></script>
     <script src="lib/toastr/toastr.js"></script>
     {% if process.env.NODE_ENV === 'development' %}

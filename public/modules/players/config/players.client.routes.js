@@ -17,6 +17,10 @@ angular.module('players').config(['$stateProvider',
 			url: '/players/:playerId',
 			templateUrl: 'modules/players/views/view-player.client.view.html'
 		}).
+		state('viewPlayerCalendar', {
+			url: '/players/:playerId/calendar',
+			templateUrl: 'modules/players/views/player-calendar.client.view.html'
+		}).
 		state('editPlayer', {
 			url: '/players/:playerId/edit',
 			templateUrl: 'modules/players/views/edit-player.client.view.html'

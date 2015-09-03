@@ -1,8 +1,8 @@
 'use strict';
 
 // Players controller
-angular.module('players').controller('PlayersController', ['$scope', '$stateParams', '$location', 'Authentication', 'Players','Competitions','Statlines','Upload',
-	function($scope, $stateParams, $location, Authentication, Players,Competitions,Statlines,Upload) {
+angular.module('players').controller('PlayersController', ['$scope', '$stateParams', '$location', 'Authentication','Players','Competitions','Statlines','Attendences','Attendencerecords','Upload',
+	function($scope, $stateParams, $location, Authentication, Players,Competitions,Statlines,Attendences,Attendencerecords,Upload) {
 		$scope.authentication = Authentication;
         $scope.years = [];
         $scope.playerstats = [];
@@ -11,7 +11,7 @@ angular.module('players').controller('PlayersController', ['$scope', '$statePara
         $scope.init = function() {
         	$scope.findOne();
         	$scope.findStats();
-        }
+        };
 		// Create new Player
 		$scope.create = function() {
             var Year = new Date(this.year,1,1,0,0,0,0);
@@ -115,6 +115,37 @@ angular.module('players').controller('PlayersController', ['$scope', '$statePara
 			$scope.player = Players.get({
 				playerId: $stateParams.playerId
 			});
+		};
+		//Calendar
+		
+		$scope.getEvents = function() {
+			$scope.calendarView = 'month';
+			$scope.calendarDay = new Date();
+			$scope.relevantattendencerecords = [];
+			$scope.attendences = Attendences.query(
+				function() {
+					for(var i = 0;i < $scope.attendences.length;i++) {						
+						var godina = $scope.attendences[i].created.substring(0,4);
+						var mjesec = $scope.attendences[i].created.substring(5,7);
+						var dan = $scope.attendences[i].created.substring(8,10);
+            		 	$scope.events.push(
+							  {
+							    title: $scope.attendences[i].name, // The title of the event
+							    type: 'info', // The type of the event (determines its color). Can be important, warning, info, inverse, success or special
+							    startsAt: new Date(godina,mjesec-1,dan) // A javascript date object for when the event starts
+							  }
+					);
+            	}
+				});
+			$scope.attendencerecords = Attendencerecords.query(
+            	function() {
+            		 for(var i = 0;i < $scope.attendencerecords.length;i++) {
+            		 	if($stateParams.playerId === $scope.attendencerecords[i].player) {
+            		 		$scope.relevantattendencerecords.push($scope.attendencerecords[i]);
+            		 	}
+            		}
+            	}
+            );
 		};
 	}
 ]);

@@ -23,12 +23,7 @@ var AttendenceSchema = new Schema({
 	user: {
 		type: Schema.ObjectId,
 		ref: 'User'
-	},
-    player: {
-        type:Schema.ObjectId,
-        ref: 'Player',
-        required: true
-    }
+	}
 });
 
 mongoose.model('Attendence', AttendenceSchema);

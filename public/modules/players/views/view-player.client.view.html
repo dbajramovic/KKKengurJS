@@ -1,4 +1,5 @@
 <section data-ng-controller="PlayersController" data-ng-init="init()">
+    <link rel="stylesheet" href="lib/bootstrap-calendar/css/calendar.css">
     <div class="row">
     <img class="col-md-2 img-circle pull-left" src="{{player.imageLink}}">
     <h1 class="naslov1 col-md-2" data-ng-bind="player.name"></h1>
@@ -14,6 +15,9 @@
         </a>
     </div>
     <h4 class="naslov1">Godište: {{player.year | date:'mediumDate'}}</h4>
+    <a class="btn btn-primary" href="/#!/statlines/{{player._id}}/create">
+            <div class="naslov1">Dodaj novi podatak</div>
+    </a>
     <div><h4 class="naslov1">Igrač je učestvovao u:</h4>
     <div class="white-bg">
         <table class="table">
@@ -42,8 +46,8 @@
             </tbody>
         </table>
     </div>
-        <a class="btn btn-primary" href="/#!/statlines/{{player._id}}/create">
-            <div class="naslov1">Dodaj novi podatak</div></i>
-        </a>
     </div>
+    <a class="btn btn-primary" href="/#!/players/{{player._id}}/calendar">
+        <div class="naslov1">Vidi kalendar</div>
+    </a>
 </section>

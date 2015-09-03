@@ -9,7 +9,8 @@ angular.module('attendencerecords').controller('AttendencerecordsController', ['
 		$scope.create = function() {
 			// Create new Attendencerecord object
 			var attendencerecord = new Attendencerecords ({
-				name: this.name
+				name: this.name,
+				created: this.created
 			});
 
 			// Redirect after save

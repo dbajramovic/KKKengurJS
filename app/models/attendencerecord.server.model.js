@@ -27,6 +27,11 @@ var AttendencerecordSchema = new Schema({
         type: Date,
         required: true
     },
+    player: {
+        type:Schema.ObjectId,
+        ref:'Player',
+        required : true
+    },
     wasattending: {
         type: Boolean,
         default: false,

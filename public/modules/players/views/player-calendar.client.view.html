@@ -1,0 +1,14 @@
+<section data-ng-controller="PlayersController" data-ng-init="getEvents()">
+    <div class="page-header">
+        <h1 class="naslov1">Prisustvo igrača</h1>
+    </div>
+<div>
+    <button class="btn btn-primary naslov1" mwl-date-modifier date="calendarDay" decrement="calendarView"> Prošli mjesec</button>
+    <button class="btn btn-primary naslov1" mwl-date-modifier date="calendarDay" set-to-today>Danas</button>
+    <button class="btn btn-primary naslov1" mwl-date-modifier date="calendarDay" increment="calendarView">Sljedeći mjesec</button>
+</div>
+    <div class="white-bg">
+        <mwl-calendar  current-day="calendarDay" view="calendarView" events="events"></mwl-calendar>
+    </div>
+    <hr>
+</section>
