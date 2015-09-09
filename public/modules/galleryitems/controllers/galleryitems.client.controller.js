@@ -8,7 +8,8 @@ angular.module('galleryitems').controller('GalleryitemsController', ['$scope', '
 		// Create new Galleryitem
 		$scope.create = function() {
 			// Create new Galleryitem object
-			var i = 0;
+			var i = $scope.files.length;
+			var j = 0;
 			angular.forEach($scope.files, function(value, key) {
 				var galleryitem = new Galleryitems ({
 				name: 'Slika'
@@ -37,12 +38,13 @@ angular.module('galleryitems').controller('GalleryitemsController', ['$scope', '
             //console.log(evt);
         	}).success(function (response, status) {
                 $location.path('gallery/');
+                j+=1;
                 //toastr['success']('Artikal je kreiran!', 'Uspješno');
             }).error(function (err) {
                 //toastr['success']('Artikal nije kreiran!', 'Greška');
                 console.log(err);
             });
-            	i+=1;
+            $scope.progress = 'Dodano '+j+' slika od'+ i;
 			});
 		};
 		// Remove existing Galleryitem
