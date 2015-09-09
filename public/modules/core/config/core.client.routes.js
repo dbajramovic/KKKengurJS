@@ -28,6 +28,10 @@ angular.module('core').config(['$stateProvider', '$urlRouterProvider',
                 url:'/dashboard',
                 templateUrl:'modules/core/views/dashboard.client.view.html'
             })
+            .state('gallery', {
+                url:'/gallery',
+                templateUrl:'modules/core/views/gallery.client.view.html'
+            })
         ;
 	}
 ]);

@@ -1,0 +1,25 @@
+<section data-ng-controller="GalleryitemsController">
+    <div class="page-header">
+        <h1 class="naslov1">Dodaj nove slike</h1>
+    </div>
+    <div class="col-md-12">
+        <form class="form-horizontal" data-ng-submit="create()" novalidate>
+            <fieldset>
+                <div class="form-group">
+                  <div class="form-group white-bg">
+                    <label class="control-label" for="name">Slike (moguće je dodati više slika odjednom):</label>
+                    <div class="controls">
+                        <input type="file" ngf-select="" ng-model="files" name="file" accept="image/*" required="" multiple="multiple">
+                    </div>
+                </div>
+                </div>
+                <div class="form-group">
+                    <input type="submit" class="btn btn-default">
+                </div>
+				<div data-ng-show="error" class="text-danger">
+					<strong data-ng-bind="error"></strong>
+				</div>
+            </fieldset>
+        </form>
+    </div>
+</section>

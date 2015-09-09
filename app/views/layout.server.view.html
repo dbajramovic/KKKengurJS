@@ -21,7 +21,7 @@
 	<meta property="og:title" content="{{title}}">
 	<meta property="og:description" content="{{description}}">
 	<meta property="og:url" content="{{url}}">
-	<meta property="og:image" content="/img/brand/logo.png">
+	<meta property="og:image" content="http://res.cloudinary.com/kengurjs/image/upload/v1440673812/11868743_1115637475117295_189897063_n_ixnqiv.jpg">
 	<meta property="og:type" content="website">
 
 	<!-- Twitter META -->
@@ -33,13 +33,14 @@
 	<!-- Fav Icon -->
 	<link href="/modules/core/img/brand/favicon.ico" rel="shortcut icon" type="image/x-icon">
     <link href='https://fonts.googleapis.com/css?family=Bitter' rel='stylesheet' type='text/css'>
-    <link rel="image_src" src="http://res.cloudinary.com/kengurjs/image/upload/c_scale,w_250/v1440673812/11868743_1115637475117295_189897063_n_ixnqiv.jpg">
 	<!--Application CSS Files-->
 	{% for cssFile in cssFiles %}<link rel="stylesheet" href="{{cssFile}}">{% endfor %}
     <link rel="stylesheet" type="text/css" href="lib/getshitdone/assets/css/get-shit-done.css">
     <link rel="stylesheet" type="text/css" href="lib/bootstrap/dist/css/kengur.css">
     <link href="lib/angular-bootstrap-calendar/dist/css/angular-bootstrap-calendar.min.css" rel="stylesheet">
-
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
+	<link rel="stylesheet" href="//blueimp.github.io/Gallery/css/blueimp-gallery.min.css">
+	<link rel="stylesheet" href="lib/bootstrap-image-gallery/css/bootstrap-image-gallery.min.css">
     <link href="lib/toastr/toastr.css" rel="stylesheet"/>
 	<!-- HTML5 Shim -->
 	<!--[if lt IE 9]>
@@ -67,6 +68,9 @@
     <script src="lib/angular-bootstrap-calendar/dist/js/angular-bootstrap-calendar-tpls.min.js"></script>
     <script src="lib/ng-file-upload/ng-file-upload.min.js"></script>
     <script src="lib/toastr/toastr.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+	<script src="//blueimp.github.io/Gallery/js/jquery.blueimp-gallery.min.js"></script>
+	<script src="lib/bootstrap-image-gallery/js/bootstrap-image-gallery.min.js"></script>
     {% if process.env.NODE_ENV === 'development' %}
 	<!--Livereload script rendered -->
 	<script type="text/javascript" src="http://{{request.hostname}}:35729/livereload.js"></script>

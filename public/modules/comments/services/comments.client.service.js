@@ -11,7 +11,7 @@ angular.module('comments').factory('Comments', ['$resource',
 			}
 		},
             {
-                getcomments: {
+                findbyArticle: {
                     method: 'GET',
                     isArray: true,
                     params: {article:'@article'}

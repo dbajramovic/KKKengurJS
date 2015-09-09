@@ -83,7 +83,17 @@ exports.list = function(req, res) {
 		}
 	});
 };
-
+exports.findbyArticle = function(req,res) {
+	Comment.find({ article : req.body.article }, {user : 0}).sort('-created').populate('article').exec(function(err,comments) {
+			if (err) {
+				return res.status(400).send({
+					message: errorHandler.getErrorMessage(err)
+				});
+			} else {
+				res.jsonp(comments);
+			}
+		});
+};
 /**
  * Comment middleware
  */

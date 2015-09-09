@@ -1,7 +1,7 @@
 'use strict';
 
-angular.module('articles').controller('ArticlesController', ['$scope', '$stateParams', '$location', 'Authentication', 'Articles','Comments','Upload',
-	function($scope, $stateParams, $location, Authentication, Articles, Comments,Upload) {
+angular.module('articles').controller('ArticlesController', ['$scope', '$stateParams', '$location', 'Authentication', 'Articles','Comments','Upload','$http',
+	function($scope, $stateParams, $location, Authentication, Articles, Comments,Upload,$http) {
 		$scope.authentication = Authentication;
 		$scope.relevantcomments = [];
 		$scope.create = function() {
@@ -73,7 +73,15 @@ angular.module('articles').controller('ArticlesController', ['$scope', '$statePa
 			$scope.articles = Articles.query();
 		};
         $scope.findComments = function() {
-            $scope.comments = Comments.query(
+        	console.log($stateParams.articleId);
+        	$scope.comments = $http.post('comments/findbyArticle', { article : $stateParams.articleId }).
+        	success(function (data, status, headers, config) {
+                            $scope.comments = $scope.comments.concat(data);
+                    }).
+        			error(function (data, status, headers, config) {
+                        console.log(data);
+                    })
+            /*$scope.comments = Comments.query(
             	function() {
             		 for(var i = 0;i < $scope.comments.length;i++) {
             		 	if($scope.article._id === $scope.comments[i].article) {
@@ -81,7 +89,7 @@ angular.module('articles').controller('ArticlesController', ['$scope', '$statePa
             		 	}
             		}
             	}
-            );
+            );*/
         };
 		$scope.findOne = function() {
 			$scope.article = Articles.get({
